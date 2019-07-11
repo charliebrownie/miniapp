@@ -1,0 +1,18 @@
+
+
+
+
+<div class="contents_row">
+    <ul class="more_list">
+      <li class="editor">
+        <%= link_to '編集', "/tweets/#{@tweet.id}/edit", method: :get, class: "waves-effect waves-light btn" %>
+      </li>
+      <li>
+        <%= link_to '削除', "/tweets/#{@tweet.id}", method: :delete, class: "waves-effect waves-light btn" %>
+      </li>
+    </ul>
+  <%= simple_format(@tweet.text) %>
+  <span class="name">
+      <span>投稿者</span><%= @tweet.name %>
+  </span>
+</div>

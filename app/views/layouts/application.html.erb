@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Miniapp</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'true' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'true' %>
+
+    <!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+
+    <!-- Compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+
+    <script
+    src="https://code.jquery.com/jquery-3.4.1.js"
+    integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
+    crossorigin="anonymous"></script>
+
+  </head>
+
+    <nav class = "deep-purple lighten-4">
+    <div class="nav-wrapper">
+          <%= link_to "私の個人アプリ", "/tweets", method: :get %>
+
+      <%# <a href="#" class="brand-logo">私の個人アプリ</a> %>
+      <ul id="nav-mobile" class="right hide-on-med-and-down">
+      <% if user_signed_in? %>
+        <li class="entry_button" style="float: right">
+          <%= link_to "SignOut", "/users/sign_out", method: :delete %>
+        </li>
+        <li class="entry_button" style="float: right">
+          <%= link_to "New", new_tweet_path %>
+        </li>
+      <% else %>    
+          <li class="entry_button" style="float: right">
+          <%= link_to "SignIn", "/users/sign_in", method: :post %>
+        </li>
+
+      <% end %>
+      </ul>
+    </div>
+  </nav>
+
+  <body>
+    <%= yield %>
+  </body>
+  <footer>
+  </footer>
+</html>
+
+

@@ -1,0 +1,32 @@
+
+
+    <div class="container">
+      <div class="row">
+        <%# <div class="col s12 m6"> %>
+        <div class="col s6 offset-s3">
+          <% @tweets.each do |tweet| %>
+            <div class="card white">
+              <div class="card-content black-text">
+                <div class="contents row">
+                  
+                  <p><%= tweet.text %></p>
+                  <div class="card-action">
+                  <%= link_to "SHOW", "/tweets/#{tweet.id}/", method: :get, class: "waves-effect waves-light btn" %>
+                  <% if user_signed_in? && current_user.id == tweet.user_id %>
+                    <%= link_to "EDIT", "/tweets/#{tweet.id}/edit", method: :get, class: "waves-effect waves-light btn" %>
+                  <% end %>
+                  <% if user_signed_in? && current_user.id == tweet.user_id %>
+                    <%= link_to "DESTROY", "/tweets/#{tweet.id}", method: :delete, data: {confirm: "いいの？"}, class: "waves-effect waves-light btn" %>
+                    
+                  <% end %>
+                
+                  </div>
+                </div>
+              </div>
+            </div>
+          <% end %>
+        </div>
+      </div>
+    </div>
+
+      <%= paginate(@tweets) %>
